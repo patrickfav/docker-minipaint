@@ -5,7 +5,8 @@ RUN yum install git -y
 RUN yum install curl -y
 RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 RUN yum install nodejs -y
-RUN yum install gcc-c++ make -y
+RUN npm -v
+RUN nodejs -v
 RUN git clone https://github.com/viliusle/miniPaint.git
 RUN cd miniPaint
 RUN npm update -y
