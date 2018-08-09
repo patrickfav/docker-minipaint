@@ -5,7 +5,7 @@ RUN yum update -y
 RUN yum install epel-release -y
 RUN yum install git -y
 RUN yum install curl -y
-RUN curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 RUN yum install nodejs -y
 RUN yum install gcc-c++ make -y
 RUN git clone https://github.com/viliusle/miniPaint.git
