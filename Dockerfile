@@ -11,4 +11,4 @@ RUN git clone https://github.com/viliusle/miniPaint.git
 WORKDIR /var/miniPaint
 RUN npm update -y
 RUN npm init -y
-CMD bash -c "node_modules/.bin/webpack-dev-server --public 172.17.0.9:4200"
+CMD bash -c "npm run build"
