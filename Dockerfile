@@ -11,4 +11,4 @@ RUN git clone https://github.com/viliusle/miniPaint.git
 WORKDIR /var/miniPaint
 RUN npm update -y
 RUN npm init -y
-CMD bash -c "npm run server"
+CMD bash -c "npm run build"
