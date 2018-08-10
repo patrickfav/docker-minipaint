@@ -11,4 +11,4 @@ RUN git clone https://github.com/viliusle/miniPaint.git
 WORKDIR /var/miniPaint
 RUN npm update -y
 RUN npm init -y
-CMD bash -c "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 4200"
+CMD bash -c "node_modules/.bin/webpack-dev-server --public paint.microhealthllc.com:8080 "
