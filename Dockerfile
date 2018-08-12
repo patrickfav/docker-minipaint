@@ -6,9 +6,11 @@ RUN yum install curl -y
 RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 RUN yum install nodejs -y
 RUN npm install -g npm -y
-WORKDIR /var
+RUN yum install nginx -y
+RUN mkdir /var/www
+WORKDIR /var/www
 RUN git clone https://github.com/viliusle/miniPaint.git
-WORKDIR /var/miniPaint
+WORKDIR /var/www/miniPaint
 RUN npm update -y
 RUN npm init -y
 CMD bash -c "npm run server"
