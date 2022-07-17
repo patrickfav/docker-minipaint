@@ -21,10 +21,10 @@ deploy:
   - provider: script
     script: bash ci/docker_push $(echo $DOCKER_REPO) latest
     on:
-      branch: master
+      branch: main
       tags: false
   - project: script
     script: sh ci/docker_push $(echo $DOCKER_REPO) $(echo $TRAVIS_TAG)
     on:
-      branch: master
+      branch: main
       tags: true
