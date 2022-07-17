@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+echo "docker tag and push $1 for version $2"
+docker image tag $1:latest $1:$2sh
+docker push $1:$2
+echo "push done"

@@ -8,8 +8,8 @@ WORKDIR /repo
 
 RUN git clone https://github.com/viliusle/miniPaint.git && \
     cd miniPaint && \
-    rm dist || exit 0 \ # remove build files already present in repo
-    git checkout tags/v4.10.0 # checkout specific version
+    rm dist || exit 0 \
+    git checkout tags/v4.10.0 # checkout specific version, change here to any tagged version from https://github.com/viliusle/miniPaint.git
 
 WORKDIR /repo/miniPaint
 
