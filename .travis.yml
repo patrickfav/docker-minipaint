@@ -1,3 +1,5 @@
+language: bash
+
 env:
   global:
   - DOCKER_REPO=pfav/minipaint
@@ -6,6 +8,9 @@ env:
     7xJ9TQGoJwYGjughSC9Zq761eD9itk5jwn2h2YoRwKRn3iBLmg66nwlMIW6iJRE9fwMZi4Z0bgsValevWjSG5aVMJ8wEp0KjY1AOXu9YNp3vtxSTq4M8Rx1DX1C7HmaTbC17ti900kpDo73sy10IuHRW3iyP8NQ0eHmrn2C6qzFwV4Lm4Wo2nt7Qdh6YjlixFuIx5YWJJ1A8celDLTd0cSTysALm+kpEd1d8kTKBt8MVm22h57Vc6N09IsZ3PcCv7fWeMSMxSAuke4ALPJpc7fDKCilF1P9rlUVWpD7XFZtyub2NfXMxcdTNVzc49S9p/QgAo13zV9XtlECtooS0="
   -  secure: "k8mpNXPhEBE4bWj90DQOEOT0V79bXiztMzsczOLYoBqO2F8v4bAwFxKMIULbFZOvJ14GjSSe2V4rX+IO+I0H23ZPnpjlEboIRrpuqNwSFUgZZFwVw5eiC3jvqgMW3Vgi803PWxBl0Zh7SoTwVRx80oRUryzz5QY86b0cJmDlPicukBiu2xMiGdUOe+PhFg3SQ6uHRoFK4kByiMmuOJ2d3jG2dn+sYl3UPK9F5iuKI6d62yD5+CkqBAOAcn8PrM2CpBPRx5vFIc327NuyaEXGKmNOGYPJT7TGsoVGT/BYLgXnt31Zx4jUZjY1BCJ87LJvvIY4G/cEgdiWNvxcUKc2vZWNLw/rUr2YaaXcFkPWRNMmb6Hr3IRm9yL9QKcEJ57j7zr8RKAk91uBDiFL0onkR86oh5HRzNYkrEKippUpt4MJgz5rYSRngGsvvU0T4aTHnme6w9OD8oePBxlpjE1kQw9njNmXREEUeBvbi5Hi+uqQp49ZSH5QQaQ9g9peE54qG5mmjJ2DvFcXHC+hM5rUsym5MY6MZtkx6zMC6i0FPZgvtD/xp3LDIbdWCOBI8Bk2+/enEQteQf92GXiF8XWjhcfX43+mo2nHtI50CHlxTovYXvDWuqnFmQ08ydLiKgOoA5r3Krr4E/V0RxEZpnYqkmtPzLM8fTyN80XxQzYrG8k="
 
+git:
+  depth: 5
+
 services:
   - docker
 
@@ -13,7 +18,13 @@ before_install:
 - docker build -t $(echo $DOCKER_REPO) .
 
 deploy:
-  provider: script
-  script: bash ci/docker_push $(echo $DOCKER_REPO) latest
-  on:
-    branch: master
+  - provider: script
+    script: sh ci/docker_push $(echo $DOCKER_REPO) latest
+    on:
+      branch: master
+      tags: false
+  - project: script
+    script: sh ci/docker_push $(echo $DOCKER_REPO) latest
+    on:
+      branch: master
+      tags: true
