@@ -15,13 +15,11 @@ services:
   - docker
 
 script:
-  - 'echo using tag $TRAVIS_TAG'
-  - 'if [ "$TRAVIS_TAG" != "" ]; then REVISION=$(echo $TRAVIS_TAG); docker build -t $(echo $DOCKER_REPO) . fi'
-  - 'if [ "$TRAVIS_TAG" = "" ]; then docker build -t $(echo $DOCKER_REPO) . fi'
+  - bash ci/docker_build
 
 deploy:
   - provider: script
-    script: sh ci/docker_push $(echo $DOCKER_REPO) latest
+    script: bash ci/docker_push $(echo $DOCKER_REPO) latest
     on:
       branch: master
       tags: false

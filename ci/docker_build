@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Parameters:"
+echo "\tDOCKER_REPO:$DOCKER_REPO"
+echo "\tTRAVIS_TAG:$TRAVIS_TAG"
+
+if [ -z "$TRAVIS_TAG" ]
+then
+      GIT_REF="master"
+else
+      GIT_REF=$TRAVIS_TAG
+fi
+
+echo "\tGIT_REF:$GIT_REF"
+
+docker build --build-arg REVISION=$GIT_REF --tag $DOCKER_REPO .

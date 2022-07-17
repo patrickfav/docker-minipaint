@@ -6,7 +6,7 @@ RUN apk update &&  \
 
 WORKDIR /repo
 
-ENV REVISION=master
+ARG REVISION=master
 
 RUN git clone https://github.com/viliusle/miniPaint.git && \
     cd miniPaint && \
