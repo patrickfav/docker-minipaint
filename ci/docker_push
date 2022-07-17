@@ -1,7 +1,14 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-echo "docker tag and push $1 for version $2"
-docker image tag "$1":latest "$1":"$2"
-docker push "$1":"$2"
+if [ -z "$TRAVIS_TAG" ]
+then
+      DOCKER_VERSION="latest"
+else
+      DOCKER_VERSION=$TRAVIS_TAG
+fi
+
+echo "docker tag and push $1 for version $DOCKER_VERSION"
+docker image tag "$1":latest "$1":"$DOCKER_VERSION"
+docker push "$1":"$DOCKER_VERSION"
 echo "push done"
