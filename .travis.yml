@@ -23,7 +23,15 @@ deploy:
     on:
       branch: main
       tags: false
+    branches:
+      only:
+        - main
+
   - project: script
     script: sh ci/docker_push $(echo $DOCKER_REPO) $(echo $TRAVIS_TAG)
     on:
+      branch: main
       tags: true
+    branches:
+      only:
+        - /^v\d+\.\d+\.\d+.*$/
