@@ -1,5 +1,7 @@
 # miniPaint Dockerized
 
+[![Build Status](https://app.travis-ci.com/patrickfav/docker-minipaint.svg?branch=master)](https://app.travis-ci.com/patrickfav/docker-minipaint)
+
 This is a dockerized version of the [miniPaint](https://github.com/viliusle/miniPaint) project by [viliusle](https://github.com/viliusle). To optimize for space and security this project only serves from [Alpine](https://www.alpinelinux.org/) with [nginx](https://www.nginx.com/) webserver.
 
 ## Quickstart
@@ -20,6 +22,25 @@ docker run -p 8080:80  local/minipaint
 ```
 
 Per default, it uses port `80` and the version is fixed to a tag that can be found in the Dockerfile.
+
+### Prepare Travis-CI
+
+To set the encrypted env variables do
+
+```bash
+travis login --pro --debug --github-token=....
+```
+(Token needs `read:org, repo, user:email, write:repo_hook` [more here.](https://docs.travis-ci.com/user/github-oauth-scopes/#travis-ci-for-private-projects))
+
+
+To attach the encrypted credentials do
+
+```bash
+travis encrypt --pro DOCKER_USERNAME="..."
+travis encrypt --pro DOCKER_PASSWORD="..."
+```
+and add the data to the travis.yml.
+
 
 # Credits
 

@@ -6,10 +6,12 @@ RUN apk update &&  \
 
 WORKDIR /repo
 
+ENV REVISION=master
+
 RUN git clone https://github.com/viliusle/miniPaint.git && \
     cd miniPaint && \
     rm dist || exit 0 \
-    git checkout tags/v4.10.0 # checkout specific version, change here to any tagged version from https://github.com/viliusle/miniPaint.git
+    git checkout $REVISION
 
 WORKDIR /repo/miniPaint
 
