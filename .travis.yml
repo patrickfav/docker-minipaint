@@ -26,5 +26,4 @@ deploy:
   - project: script
     script: sh ci/docker_push $(echo $DOCKER_REPO) $(echo $TRAVIS_TAG)
     on:
-      branch: main
       tags: true
