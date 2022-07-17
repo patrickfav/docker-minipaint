@@ -33,3 +33,5 @@ COPY --from=builder /repo/miniPaint/dist /usr/share/nginx/html/dist
 HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1
 
 EXPOSE 80/tcp
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -41,6 +41,10 @@ travis encrypt --pro DOCKER_PASSWORD="..."
 ```
 and add the data to the travis.yml.
 
+## Deploy
+
+By default, every commit will build and deploy `latest` tag. If you want to build and deploy a specific version, tag the
+commit with the very same tag as is [used here](https://github.com/viliusle/miniPaint/releases).
 
 # Credits
 
