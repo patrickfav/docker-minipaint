@@ -6,13 +6,10 @@ echo -e "\tTRAVIS_TAG:$TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]
 then
       GIT_REF="master"
-      DOCKER_VERSION="latest"
 else
       GIT_REF=$TRAVIS_TAG
-      DOCKER_VERSION=$GIT_REF
 fi
 
 echo -e "\tGIT_REF:$GIT_REF"
-echo -e "\tDOCKER_VERSION:$DOCKER_VERSION"
 
 docker build --build-arg REVISION="$GIT_REF" --tag "$DOCKER_REPO" .

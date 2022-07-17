@@ -8,6 +8,8 @@ WORKDIR /repo
 
 ARG REVISION=master
 
+RUN echo "$REVISION"
+
 RUN git clone https://github.com/viliusle/miniPaint.git && \
     cd miniPaint && \
     rm dist || exit 0 \
