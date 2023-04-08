@@ -28,8 +28,7 @@ Per default, it uses port `80` and the version is fixed to a tag that can be fou
 Add the following parameters to [GitHub Actions secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
 
 ```bash
-DOCKER_USERNAME="..."
-DOCKER_PASSWORD="..."
+DOCKERHUB_TOKEN // -> https://docs.docker.com/docker-hub/access-tokens/
 ```
 and add the data to the travis.yml.
 
