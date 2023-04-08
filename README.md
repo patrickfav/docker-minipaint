@@ -1,6 +1,7 @@
 # miniPaint Dockerized
 
-[![Build Status](https://app.travis-ci.com/patrickfav/docker-minipaint.svg?branch=main)](https://app.travis-ci.com/patrickfav/docker-minipaint)
+[![Build Status](https://github.com/patrickfav/docker-minipaint/actions/workflows/docker_build_and_push.yml/badge.svg)](https://github.com/patrickfav/docker-minipaint/actions)
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/pfav/minipaint?label=docker.io)](https://hub.docker.com/r/pfav/minipaint)
 
 This is a dockerized version of the [miniPaint](https://github.com/viliusle/miniPaint) project by [viliusle](https://github.com/viliusle). To optimize for space and security this project only serves from [Alpine](https://www.alpinelinux.org/) with [nginx](https://www.nginx.com/) webserver.
 
@@ -30,12 +31,12 @@ Add the following parameters to [GitHub Actions secrets](https://docs.github.com
 ```bash
 DOCKERHUB_TOKEN // -> https://docs.docker.com/docker-hub/access-tokens/
 ```
-and add the data to the travis.yml.
 
 ## Deploy
 
 By default, every commit will build and deploy `latest` tag. If you want to build and deploy a specific version, tag the
-commit with the very same tag as is [used here](https://github.com/viliusle/miniPaint/releases).
+commit with the very same tag as is [used here](https://github.com/viliusle/miniPaint/releases). CI will deploy to 
+[docker.io](https://hub.docker.com/r/pfav/minipaint) and [ghcr.io](https://github.com/patrickfav/docker-minipaint/pkgs/container/minipaint).
 
 # Credits
 
