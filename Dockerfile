@@ -12,12 +12,12 @@ RUN echo "$REVISION"
 
 RUN git clone https://github.com/viliusle/miniPaint.git && \
     cd miniPaint && \
-    rm dist || exit 0 \
     git checkout $REVISION
+RUN rm -rf dist || exit 0
 
 WORKDIR /repo/miniPaint
 
-RUN npm update -y &&  \
+RUN npm ci -y &&  \
     npm init -y && \
     npm run build # create production build according to https://github.com/viliusle/miniPaint/wiki/Build-instructions
 
